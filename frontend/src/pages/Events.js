@@ -17,7 +17,9 @@ export const loader = async () => {
   if (!response.ok) {
     // return {error : true , message:'could not fetch the events'}
     // eslint-disable-next-line 
-    throw { message : 'could not fetch'}
+    throw new Response(JSON.stringify({message:'Could not fetch events'}),{
+      status:500
+    })
   } else {
    return response;
   }
