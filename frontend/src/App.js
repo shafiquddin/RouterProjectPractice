@@ -22,10 +22,12 @@
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/Home";
-import EventsPage,{loader as eventsLoader} from "./pages/Events";
-import EventDetailsPage,{loader as eventDetailsLoader} from "./pages/EventDetails";
+import EventsPage, { loader as eventsLoader } from "./pages/Events";
+import EventDetailsPage, {
+  loader as eventDetailsLoader,
+} from "./pages/EventDetails";
 import EditEventPage from "./pages/EditEvent";
-import NewEventPage from "./pages/NewEvent";
+import NewEventPage , {actions as newEventActions} from "./pages/NewEvent";
 import Root from "./pages/Root";
 import EventsRoot from "./pages/EventsRoots";
 import Error from "./pages/Error";
@@ -34,7 +36,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement:<Error/>,
+    errorElement: <Error />,
     children: [
       { index: true, element: <HomePage /> },
       {
@@ -46,9 +48,16 @@ const router = createBrowserRouter([
             element: <EventsPage />,
             loader: eventsLoader,
           },
-          { path: ":eventId", element: <EventDetailsPage /> , loader:eventDetailsLoader },
-          { path: "new", element: <NewEventPage /> },
-          { path: ":eventId/edit", element: <EditEventPage /> },
+          {
+            path: ":eventId",
+            id:'event-details',
+            loader:eventDetailsLoader,
+            children: [
+              { index:true, element: <EventDetailsPage /> },
+              { path: "edit", element: <EditEventPage /> },
+            ],
+          },
+          { path: "new", element: <NewEventPage /> ,action: newEventActions },
         ],
       },
     ],
