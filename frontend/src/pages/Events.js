@@ -16,6 +16,7 @@ export const loader = async () => {
   const response = await fetch("http://localhost:8080/events");
   if (!response.ok) {
     // return {error : true , message:'could not fetch the events'}
+    // eslint-disable-next-line 
     throw { message : 'could not fetch'}
   } else {
    return response;

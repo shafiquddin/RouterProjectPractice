@@ -1,5 +1,8 @@
+import PageContent from "../components/PageContent";
 
 const Error = () => {
-    return <h1>An Error Occured!</h1>
+    return <PageContent title='An error occurred!'>
+        <p>Something went wrong</p>
+    </PageContent>
 }
 export default Error;
