@@ -13,6 +13,7 @@ function EventsList({ events }) {
               <div className={classes.content}>
                 <h2>{event.title}</h2>
                 <time>{event.date}</time>
+                <p>{event.description}</p>
               </div>
             </Link>
           </li>
