@@ -18,7 +18,7 @@ function EventItem({ event }) {
       <time>{event.date}</time>
       <p>{event.description}</p>
       <menu className={classes.actions}>
-        <Link to="edit">Edit</Link>
+        <Link to="edit" style={{color:'yellowgreen'}}>Edit</Link>
         <button onClick={startDeleteHandler}>Delete</button>
       </menu>
     </article>
