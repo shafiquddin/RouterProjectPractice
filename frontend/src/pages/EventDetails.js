@@ -11,6 +11,7 @@ import EventsList from "../components/EventsList";
 
 const EventDetails = () => {
   const { events, event } = useRouteLoaderData("event-details");
+
   return (
     <>
       <Suspense fallback={<p style={{ textAlign: "center" }}>Loading ...</p>}>
@@ -48,7 +49,7 @@ const loadEvents = async () => {
   }
 };
 
-export const loader = async ({ request, params }) => {
+export const loader = ({ request, params }) => {
   const id = params.eventId;
   return defer({
     event: loadEvent(id),
